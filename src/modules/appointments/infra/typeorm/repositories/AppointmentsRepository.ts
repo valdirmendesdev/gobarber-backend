@@ -12,17 +12,16 @@ class AppointmentsRepository implements IAppointmentsRepository {
     this.ormRepository = getRepository(Appointment);
   }
 
-  findAllInDayFromProvider(
-    data: IFindAllInDayProviderDTO,
-  ): Promise<Appointment[]> {
-    throw new Error('Method not implemented.');
-  }
-
   public async create({
     provider_id,
     date,
+    user_id,
   }: ICreateAppointmentDTO): Promise<Appointment> {
-    const appointment = this.ormRepository.create({ provider_id, date });
+    const appointment = this.ormRepository.create({
+      provider_id,
+      date,
+      user_id,
+    });
 
     await this.ormRepository.save(appointment);
 
@@ -55,7 +54,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
     return appointments;
   }
 
-  public async findAllInDayomProvider({
+  public async findAllInDayFromProvider({
     provider_id,
     year,
     month,
