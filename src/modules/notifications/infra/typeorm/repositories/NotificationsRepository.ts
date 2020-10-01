@@ -2,7 +2,7 @@ import ICreateNotificationDTO from '@modules/notifications/dtos/ICreateNotificat
 import { getMongoRepository, MongoRepository } from 'typeorm';
 import Notification from '../schemas/Notification';
 
-export default class NotificationRepository {
+export default class NotificationsRepository {
   private ormRepository: MongoRepository<Notification>;
 
   constructor() {
